@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fourmina · Onboarding</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon-48.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--panel:#F5F5F7;--surface:#FFFFFF;--ink:#1D1D1F;--muted:#6E6E73;--line:#E8E8ED;--brand:#0071E3;--brand-dk:#0077ED;--link:#0066CC;--green:#248A3D;--green-soft:#E8F5EC;--tint:#E8F2FF;--red:#C0392B}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--panel);color:var(--ink);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:var(--link)}
+.top{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .in{max-width:760px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{font-family:'Space Grotesk','Inter',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.logo b{color:var(--brand)}
+.langsw{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--bg)}
+.langsw button{border:0;background:transparent;padding:6px 12px;font:inherit;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer}
+.langsw button.active{background:var(--ink);color:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding:36px 20px 80px}
+.kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+h1{font-family:'Space Grotesk','Inter',sans-serif;font-size:34px;font-weight:700;letter-spacing:-.035em;line-height:1.05;margin-bottom:12px}
+.lead{color:var(--muted);font-size:16px;max-width:600px}
+.lead b{color:var(--ink);font-weight:600}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 26px 22px;margin-top:22px}
+.card h2{font-size:19px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px;display:flex;gap:10px;align-items:baseline}
+.card h2 .n{display:inline-flex;width:26px;height:26px;border-radius:50%;background:var(--tint);color:var(--link);font-size:13px;font-weight:700;align-items:center;justify-content:center;flex:none;position:relative;top:-2px}
+.card .why{font-size:14px;color:var(--muted);margin-bottom:18px}
+.f{margin-bottom:18px}
+.f:last-child{margin-bottom:0}
+label.l{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+label.l small{font-weight:500;color:var(--muted)}
+.req::after{content:" *";color:var(--brand)}
+input[type=text],input[type=email],input[type=tel],input[type=url],input[type=number],input[type=time],select,textarea{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 14px;outline:none;transition:border-color .15s,background .15s}
+textarea{min-height:104px;resize:vertical;line-height:1.5}
+textarea.tall{min-height:160px}
+input:focus,select:focus,textarea:focus{border-color:var(--brand);background:var(--bg)}
+::placeholder{color:#9A9AA1}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.row{grid-template-columns:1fr}.card{padding:20px 18px}h1{font-size:28px}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:2px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.chip span{display:inline-block;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font-size:14px;font-weight:500;cursor:pointer;user-select:none}
+.chip input:checked+span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip input:focus-visible+span{outline:2px solid var(--brand);outline-offset:2px}
+.hint{font-size:13px;color:var(--muted);margin-top:6px}
+.hotel-only,.rest-only{display:none}
+body[data-type="hotel"] .hotel-only{display:block}
+body[data-type="restaurant"] .rest-only,body[data-type="cafe"] .rest-only,body[data-type="other"] .rest-only{display:block}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--muted)}
+.consent input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:26px}
+.btn{font:inherit;font-size:15px;font-weight:600;border:0;border-radius:999px;padding:13px 24px;cursor:pointer}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-primary:hover{background:var(--brand-dk)}
+.btn-primary:disabled{opacity:.6;cursor:wait}
+.btn-ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line)}
+.status{font-size:13px;color:var(--muted)}
+.status.err{color:var(--red)}
+.done{display:none;text-align:center;padding:60px 20px}
+.done .ok{width:64px;height:64px;border-radius:50%;background:var(--green-soft);color:var(--green);display:inline-flex;align-items:center;justify-content:center;font-size:30px;font-weight:700;margin-bottom:18px}
+.done h2{font-family:'Space Grotesk','Inter',sans-serif;font-size:28px;letter-spacing:-.03em;margin-bottom:10px}
+.done p{color:var(--muted);max-width:480px;margin:0 auto 8px}
+.fallback{display:none;margin-top:18px;text-align:left}
+.fallback textarea{min-height:220px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px}
+.foot{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 16px}
+</style>
+</head>
+<body data-type="restaurant">
+
+<div class="top"><div class="in">
+  <a class="logo" href="https://fourmina.com">fourmina<b>.</b></a>
+  <div class="langsw" role="group" aria-label="Language">
+    <button type="button" data-lang="en" class="active">EN</button>
+    <button type="button" data-lang="de">DE</button>
+  </div>
+</div></div>
+
+<main class="wrap">
+  <div id="intro">
+    <div class="kicker" data-i18n="kicker">Onboarding</div>
+    <h1 data-i18n="h1">Tell Mina what you tell your guests on the phone.</h1>
+    <p class="lead" data-i18n="lead">This takes about 15 minutes. Write the way you would explain it to a new colleague on their first day. <b>Short, in your own words.</b> We do not need your full menu, only what people actually ask. Your answers are saved in this browser as you type, so you can come back later.</p>
+  </div>
+
+  <form id="f" novalidate>
+
+    <!-- 1 -->
+    <section class="card">
+      <h2><span class="n">1</span><span data-i18n="s1">Your business</span></h2>
+      <p class="why" data-i18n="s1w">So Mina introduces the right place and we know who to talk to.</p>
+      <div class="row">
+        <div class="f"><label class="l req" for="biz" data-i18n="biz">Business name</label><input type="text" id="biz" name="business_name" required></div>
+        <div class="f"><label class="l req" data-i18n="type">Type</label>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="business_type" value="restaurant" checked><span data-i18n="t_rest">Restaurant</span></label>
+            <label class="chip"><input type="radio" name="business_type" value="cafe"><span data-i18n="t_cafe">Café / Bar</span></label>
+            <label class="chip"><input type="radio" name="business_type" value="hotel"><span data-i18n="t_hotel">Hotel</span></label>
+            <label class="chip"><input type="radio" name="business_type" value="other"><span data-i18n="t_other">Other</span></label>
+          </div>
+        </div>
+      </div>
+      <div class="f"><label class="l" for="addr" data-i18n="addr">Address</label><input type="text" id="addr" name="address" data-ph="addr_ph" placeholder="Street, number, postcode, city"></div>
+      <div class="row">
+        <div class="f"><label class="l" for="web" data-i18n="web">Website</label><input type="url" id="web" name="website" placeholder="https://"></div>
+        <div class="f"><label class="l req" for="gphone" data-i18n="gphone">Phone number your guests call</label><input type="tel" id="gphone" name="guest_phone" required placeholder="+49 30 …"></div>
+      </div>
+      <div class="row">
+        <div class="f"><label class="l req" for="contact" data-i18n="contact">Contact person</label><input type="text" id="contact" name="contact_name" required></div>
+        <div class="f"><label class="l req" for="email" data-i18n="email">Email</label><input type="email" id="email" name="contact_email" required></div>
+      </div>
+      <div class="f"><label class="l" for="mob" data-i18n="mob">Mobile / WhatsApp for quick questions during setup</label><input type="tel" id="mob" name="contact_mobile"></div>
+    </section>
+
+    <!-- 2 -->
+    <section class="card">
+      <h2><span class="n">2</span><span data-i18n="s2">Opening hours</span></h2>
+      <p class="why" data-i18n="s2w">The most asked question on any phone line.</p>
+      <div class="f"><label class="l req" for="hours" data-i18n="hours">Opening hours by day</label><textarea id="hours" name="opening_hours" required data-ph="hours_ph" placeholder="Mon closed&#10;Tue–Fri 12:00–15:00 and 18:00–23:00&#10;Sat–Sun 12:00–23:00"></textarea></div>
+      <div class="f rest-only"><label class="l" for="kitchen" data-i18n="kitchen">Kitchen hours, last order</label><input type="text" id="kitchen" name="kitchen_hours" data-ph="kitchen_ph" placeholder="Kitchen until 22:00, last order 21:30"></div>
+      <div class="f"><label class="l" for="closed" data-i18n="closed">Closed days, holidays, seasonal changes</label><textarea id="closed" name="closed_days" data-ph="closed_ph" placeholder="Closed 24–26 Dec. Summer break first two weeks of August. Terrace only May–September."></textarea></div>
+    </section>
+
+    <!-- 3 -->
+    <section class="card">
+      <h2><span class="n">3</span><span data-i18n="s3">Reservations and bookings</span></h2>
+      <p class="why" data-i18n="s3w">The rules Mina follows when someone wants to book.</p>
+      <div class="f"><label class="l req" data-i18n="takes">Do you take reservations by phone?</label>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="takes_reservations" value="yes" checked><span data-i18n="yes">Yes</span></label>
+          <label class="chip"><input type="radio" name="takes_reservations" value="no"><span data-i18n="no">No, walk-in only</span></label>
+        </div>
+      </div>
+      <div class="f"><label class="l" for="system" data-i18n="system">Booking system you use today</label><input type="text" id="system" name="booking_system" data-ph="system_ph" placeholder="None / DinnerBooking / Zenchef / Tablein / OpenTable / resmio / paper book / other"></div>
+      <div class="row">
+        <div class="f"><label class="l" for="maxp" data-i18n="maxp">Largest group Mina may book directly</label><input type="number" id="maxp" name="max_party" min="1" placeholder="8"></div>
+        <div class="f"><label class="l" for="dur" data-i18n="dur">How long a table is held or a slot lasts</label><input type="text" id="dur" name="slot_duration" data-ph="dur_ph" placeholder="2 hours; 15 minutes late then released"></div>
+      </div>
+      <div class="f"><label class="l" for="rules" data-i18n="rules">Your booking rules</label><textarea class="tall" id="rules" name="booking_rules" data-ph="rules_ph" placeholder="Groups over 8: we call back and ask for a deposit of 10 € per person. Cancellation free until 12:00 same day. No-show twice: we ask for a card. Terrace cannot be reserved. Only two large tables per evening."></textarea></div>
+      <div class="f"><label class="l" for="full" data-i18n="full">When you are fully booked</label><textarea id="full" name="full_house" data-ph="full_ph" placeholder="Offer the next free time the same evening, then another day. Waiting list yes, we message if a table frees up. Bar seats are always walk-in."></textarea></div>
+    </section>
+
+    <!-- 4 -->
+    <section class="card">
+      <h2><span class="n">4</span><span data-i18n="s4">What guests ask you on the phone</span></h2>
+      <p class="why" data-i18n="s4w">This is the heart of it. Write the questions and your usual answers. Be honest and specific.</p>
+      <div class="f"><label class="l req" for="faq" data-i18n="faq">Your ten most common questions and answers</label><textarea class="tall" id="faq" name="faq" required data-ph="faq_ph" placeholder="Parking? Public car park 200 m away, free after 18:00.&#10;Kids? Yes, high chairs, small kids menu.&#10;Dogs? Yes on the terrace, not inside.&#10;Vegan? Always 3 vegan mains, tell us about allergies when booking.&#10;Payment? Card, cash, Apple Pay. No AmEx.&#10;Private events? Up to 40 people, Monday–Wednesday, set menu from 45 €.&#10;Delivery? No. Takeaway yes, order by phone, ready in 20 minutes.&#10;Wheelchair? Ground floor yes, toilet accessible.&#10;Dress code? None.&#10;Gift vouchers? Yes, at the counter or by email."></textarea></div>
+      <div class="f"><label class="l" for="never" data-i18n="never">Things Mina must never say or promise</label><textarea id="never" name="never_say" data-ph="never_ph" placeholder="Never confirm a group over 12 without us. Never promise a specific table or a window seat. Never discuss discounts. Never give the chef's or owner's private number."></textarea></div>
+      <div class="f"><label class="l req" for="handover" data-i18n="handover">When should Mina hand over to a person, and to whom?</label><textarea id="handover" name="handover" required data-ph="handover_ph" placeholder="Complaints, press, suppliers, anything about invoices: take name and number, we call back. Urgent: forward to Anna, +49 170 …, between 10:00 and 22:00."></textarea></div>
+    </section>
+
+    <!-- 5 hotel -->
+    <section class="card hotel-only">
+      <h2><span class="n">5</span><span data-i18n="s5">Hotel details</span></h2>
+      <p class="why" data-i18n="s5w">What every guest asks before, during and after a stay.</p>
+      <div class="row">
+        <div class="f"><label class="l" for="cin" data-i18n="cin">Check-in from</label><input type="text" id="cin" name="checkin" placeholder="15:00"></div>
+        <div class="f"><label class="l" for="cout" data-i18n="cout">Check-out until</label><input type="text" id="cout" name="checkout" placeholder="11:00"></div>
+      </div>
+      <div class="f"><label class="l" for="early" data-i18n="early">Early check-in and late check-out: possible? Price?</label><input type="text" id="early" name="early_late" data-ph="early_ph" placeholder="Early from 12:00 for 25 €, late until 14:00 for 25 €, subject to availability"></div>
+      <div class="f"><label class="l" for="bf" data-i18n="bf">Breakfast: hours, price, included or not</label><input type="text" id="bf" name="breakfast" data-ph="bf_ph" placeholder="07:00–10:30, 18 € per person, included in most rates"></div>
+      <div class="f"><label class="l" for="keys" data-i18n="keys">Arrival and keys: how does a guest get in? Reception hours, key box, night arrival</label><textarea id="keys" name="arrival_keys" data-ph="keys_ph" placeholder="Reception 07:00–22:00. After 22:00 a key box code is sent by SMS once the registration form is filled in."></textarea></div>
+      <div class="f"><label class="l" for="hfaq" data-i18n="hfaq">Other frequent questions: parking, pets, Wi-Fi, luggage, taxi, invoices for companies, extra bed, smoking, quiet hours</label><textarea class="tall" id="hfaq" name="hotel_faq" data-ph="hfaq_ph" placeholder="Parking: 5 spaces in the yard, 12 € per night, first come first served.&#10;Pets: dogs welcome, 15 € per night.&#10;Company invoice: yes, send company name and address to the reception, invoice on check-out.&#10;Luggage: we store it free on arrival and departure day."></textarea></div>
+    </section>
+
+    <!-- 6 -->
+    <section class="card">
+      <h2><span class="n">6</span><span data-i18n="s6">Tone and languages</span></h2>
+      <p class="why" data-i18n="s6w">Mina should sound like your place, not like a call centre.</p>
+      <div class="row">
+        <div class="f"><label class="l" data-i18n="formal">How do you address guests?</label>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="address_form" value="formal" checked><span data-i18n="sie">Formal (Sie / vous)</span></label>
+            <label class="chip"><input type="radio" name="address_form" value="informal"><span data-i18n="du">Informal (du / tu)</span></label>
+          </div>
+        </div>
+        <div class="f"><label class="l" for="langs" data-i18n="langs">Languages your guests speak</label><input type="text" id="langs" name="languages" data-ph="langs_ph" placeholder="German, English, some Spanish"></div>
+      </div>
+      <div class="f"><label class="l" for="greet" data-i18n="greet">How should Mina answer the phone?</label><input type="text" id="greet" name="greeting" data-ph="greet_ph" placeholder="“Trattoria Mare, hello, this is Mina, how can I help?”"></div>
+      <div class="f"><label class="l" for="tone" data-i18n="tone">Anything about tone or personality</label><textarea id="tone" name="tone" data-ph="tone_ph" placeholder="Warm and quick. We are a family place, no fancy words. Regulars often call, be friendly if someone says they come every week."></textarea></div>
+    </section>
+
+    <!-- 7 -->
+    <section class="card">
+      <h2><span class="n">7</span><span data-i18n="s7">Who gets what</span></h2>
+      <p class="why" data-i18n="s7w">Mina works around your team, not the other way round.</p>
+      <div class="f"><label class="l req" for="recips" data-i18n="recips">Who receives new bookings, group requests and messages, and how?</label><textarea id="recips" name="recipients" required data-ph="recips_ph" placeholder="Bookings: WhatsApp group “Service”, +49 …&#10;Group and event requests: Marco by email, marco@…&#10;Complaints: Anna directly, +49 170 …"></textarea></div>
+      <div class="row">
+        <div class="f"><label class="l" data-i18n="summary">Daily summary at closing?</label>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="daily_summary" value="yes" checked><span data-i18n="yes2">Yes</span></label>
+            <label class="chip"><input type="radio" name="daily_summary" value="no"><span data-i18n="no2">No</span></label>
+          </div>
+        </div>
+        <div class="f"><label class="l" for="sumto" data-i18n="sumto">Send the summary to (name, WhatsApp or email) and at what time</label><input type="text" id="sumto" name="summary_to" data-ph="sumto_ph" placeholder="Anna, WhatsApp, 23:30"></div>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="card">
+      <h2><span class="n">8</span><span data-i18n="s8">Your phone line</span></h2>
+      <p class="why" data-i18n="s8w">Needed to switch Mina on. If you do not know, write “don't know”, we will find out together.</p>
+      <div class="row">
+        <div class="f"><label class="l" for="carrier" data-i18n="carrier">Phone provider</label><input type="text" id="carrier" name="carrier" data-ph="carrier_ph" placeholder="Telekom / Vodafone / o2 / 1&1 / other"></div>
+        <div class="f"><label class="l" for="line" data-i18n="line">Type of line</label>
+          <select id="line" name="line_type">
+            <option value="" data-i18n="l_pick">Please choose</option>
+            <option value="mobile" data-i18n="l_mob">Mobile</option>
+            <option value="landline" data-i18n="l_land">Landline</option>
+            <option value="voip" data-i18n="l_voip">Internet phone (VoIP, FRITZ!Box)</option>
+            <option value="pbx" data-i18n="l_pbx">Phone system (PBX)</option>
+            <option value="unknown" data-i18n="l_unk">Don't know</option>
+          </select>
+        </div>
+      </div>
+      <div class="f"><label class="l" data-i18n="fwd">When should Mina pick up?</label>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="forwarding" value="no_answer" checked><span data-i18n="fwd1">When nobody answers within 15 seconds (recommended)</span></label>
+          <label class="chip"><input type="radio" name="forwarding" value="always"><span data-i18n="fwd2">Always, every call</span></label>
+          <label class="chip"><input type="radio" name="forwarding" value="schedule"><span data-i18n="fwd3">Only outside opening hours</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="card">
+      <h2><span class="n">9</span><span data-i18n="s9">Anything else</span></h2>
+      <p class="why" data-i18n="s9w">Whatever a new colleague would need to know on day one.</p>
+      <div class="f"><textarea id="other" name="anything_else" data-ph="other_ph" placeholder="We have a second entrance on the side street. Our chef is Sicilian. We are next to the theatre, so 19:00 is always full on show nights."></textarea></div>
+      <div class="f">
+        <label class="consent"><input type="checkbox" id="consent" name="consent" required><span data-i18n="consent">I agree that Fourmina (Krok Group Ltd) processes this information to set up and run the assistant for my business, as described in the <a href="https://fourmina.com/fourmina-privacy-v2.html" target="_blank" rel="noopener">privacy policy</a>.</span></label>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button class="btn btn-primary" type="submit" id="send" data-i18n="send">Send to Fourmina</button>
+      <button class="btn btn-ghost" type="button" id="clear" data-i18n="clear">Clear form</button>
+      <span class="status" id="status"></span>
+    </div>
+  </form>
+
+  <div class="done" id="done">
+    <div class="ok">✓</div>
+    <h2 data-i18n="done_h">Thank you. Mina is reading.</h2>
+    <p data-i18n="done_p">We will come back to you within one business day with the first version of your assistant and a time for a 20-minute call to switch on the phone line.</p>
+    <p><a href="mailto:hello@fourmina.com">hello@fourmina.com</a></p>
+    <div class="fallback" id="fallback">
+      <p class="hint" data-i18n="fb_p">Sending did not go through automatically. Your answers are below. Please copy them into an email to hello@fourmina.com, or use the button.</p>
+      <textarea id="fbtext" readonly></textarea>
+      <div class="actions" style="margin-top:12px">
+        <a class="btn btn-primary" id="fbmail" href="#" data-i18n="fb_mail">Open email</a>
+        <button class="btn btn-ghost" type="button" id="fbcopy" data-i18n="fb_copy">Copy text</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <span>© <span id="yr"></span> Fourmina · Krok Group Ltd</span>
+  <a href="https://fourmina.com/fourmina-privacy-v2.html">Privacy</a>
+  <a href="https://fourmina.com/fourmina-impressum.html">Impressum</a>
+  <a href="mailto:hello@fourmina.com">hello@fourmina.com</a>
+</footer>
+
+<script>
+// ---- CONFIG ----
+// Web3Forms access key (free, delivers to hello@fourmina.com). Empty = email fallback.
+var ACCESS_KEY = "";
+var TO_EMAIL = "hello@fourmina.com";
+
+// ---- i18n ----
+var T = {
+ de: {
+  kicker:"Onboarding",
+  h1:"Erzählen Sie Mina, was Sie Ihren Gästen am Telefon sagen.",
+  lead:"Das dauert etwa 15 Minuten. Schreiben Sie so, wie Sie es einer neuen Kollegin am ersten Tag erklären würden. <b>Kurz, in Ihren Worten.</b> Wir brauchen nicht die ganze Speisekarte, nur das, was wirklich gefragt wird. Ihre Antworten werden beim Tippen in diesem Browser gespeichert, Sie können später weitermachen.",
+  s1:"Ihr Betrieb", s1w:"Damit Mina den richtigen Ort nennt und wir wissen, mit wem wir sprechen.",
+  biz:"Name des Betriebs", type:"Art", t_rest:"Restaurant", t_cafe:"Café / Bar", t_hotel:"Hotel", t_other:"Anderes",
+  addr:"Adresse", addr_ph:"Straße, Hausnummer, PLZ, Ort", web:"Website", gphone:"Telefonnummer, die Ihre Gäste anrufen",
+  contact:"Ansprechperson", email:"E-Mail", mob:"Mobil / WhatsApp für kurze Rückfragen während der Einrichtung",
+  s2:"Öffnungszeiten", s2w:"Die häufigste Frage an jedem Telefon.",
+  hours:"Öffnungszeiten nach Tagen", hours_ph:"Mo Ruhetag\nDi–Fr 12:00–15:00 und 18:00–23:00\nSa–So 12:00–23:00",
+  kitchen:"Küchenzeiten, letzte Bestellung", kitchen_ph:"Küche bis 22:00, letzte Bestellung 21:30",
+  closed:"Ruhetage, Feiertage, saisonale Änderungen", closed_ph:"24.–26.12. geschlossen. Sommerpause erste zwei Augustwochen. Terrasse nur Mai–September.",
+  s3:"Reservierungen", s3w:"Die Regeln, nach denen Mina bucht.",
+  takes:"Nehmen Sie Reservierungen per Telefon an?", yes:"Ja", no:"Nein, nur Walk-in",
+  system:"Reservierungssystem, das Sie heute nutzen", system_ph:"Keins / DinnerBooking / Zenchef / Tablein / OpenTable / resmio / Reservierungsbuch / anderes",
+  maxp:"Größte Gruppe, die Mina direkt buchen darf", dur:"Wie lange ein Tisch gehalten wird oder ein Slot dauert", dur_ph:"2 Stunden; 15 Minuten Verspätung, dann freigegeben",
+  rules:"Ihre Reservierungsregeln", rules_ph:"Gruppen über 8: wir rufen zurück und bitten um 10 € Anzahlung pro Person. Stornierung kostenlos bis 12:00 am selben Tag. Zweimal nicht erschienen: wir fragen nach einer Karte. Terrasse nicht reservierbar. Nur zwei große Tische pro Abend.",
+  full:"Wenn Sie ausgebucht sind", full_ph:"Nächste freie Zeit am selben Abend anbieten, dann einen anderen Tag. Warteliste ja, wir melden uns, wenn ein Tisch frei wird. Barplätze immer ohne Reservierung.",
+  s4:"Was Gäste am Telefon fragen", s4w:"Das ist der Kern. Schreiben Sie die Fragen und Ihre üblichen Antworten. Ehrlich und konkret.",
+  faq:"Ihre zehn häufigsten Fragen und Antworten", faq_ph:"Parken? Öffentliches Parkhaus 200 m, ab 18:00 kostenlos.\nKinder? Ja, Hochstühle, kleine Kinderkarte.\nHunde? Ja auf der Terrasse, nicht innen.\nVegan? Immer 3 vegane Hauptgerichte, Allergien bitte bei der Reservierung nennen.\nZahlung? Karte, bar, Apple Pay. Kein AmEx.\nPrivate Feiern? Bis 40 Personen, Montag–Mittwoch, Menü ab 45 €.\nLieferung? Nein. Abholung ja, telefonisch bestellen, in 20 Minuten fertig.\nRollstuhl? Erdgeschoss ja, WC barrierefrei.\nDresscode? Keiner.\nGutscheine? Ja, an der Theke oder per E-Mail.",
+  never:"Was Mina niemals sagen oder versprechen darf", never_ph:"Niemals eine Gruppe über 12 ohne uns bestätigen. Niemals einen bestimmten Tisch oder Fensterplatz versprechen. Keine Rabatte besprechen. Keine privaten Nummern von Koch oder Inhaber herausgeben.",
+  handover:"Wann soll Mina an einen Menschen übergeben, und an wen?", handover_ph:"Beschwerden, Presse, Lieferanten, alles zu Rechnungen: Name und Nummer aufnehmen, wir rufen zurück. Dringend: an Anna weiterleiten, +49 170 …, zwischen 10:00 und 22:00.",
+  s5:"Hotel-Details", s5w:"Was jeder Gast vor, während und nach dem Aufenthalt fragt.",
+  cin:"Check-in ab", cout:"Check-out bis", early:"Früher Check-in und später Check-out: möglich? Preis?", early_ph:"Früh ab 12:00 für 25 €, spät bis 14:00 für 25 €, nach Verfügbarkeit",
+  bf:"Frühstück: Zeiten, Preis, inklusive oder nicht", bf_ph:"07:00–10:30, 18 € pro Person, in den meisten Raten inklusive",
+  keys:"Ankunft und Schlüssel: wie kommt der Gast hinein? Rezeptionszeiten, Schlüsselbox, späte Ankunft", keys_ph:"Rezeption 07:00–22:00. Nach 22:00 wird der Code der Schlüsselbox per SMS geschickt, sobald der Meldeschein ausgefüllt ist.",
+  hfaq:"Weitere häufige Fragen: Parken, Haustiere, WLAN, Gepäck, Taxi, Firmenrechnung, Zustellbett, Rauchen, Ruhezeiten", hfaq_ph:"Parken: 5 Plätze im Hof, 12 € pro Nacht, nach Ankunft.\nHaustiere: Hunde willkommen, 15 € pro Nacht.\nFirmenrechnung: ja, Firmenname und Adresse an die Rezeption, Rechnung beim Check-out.\nGepäck: kostenlose Aufbewahrung am An- und Abreisetag.",
+  s6:"Ton und Sprachen", s6w:"Mina soll klingen wie Ihr Haus, nicht wie ein Callcenter.",
+  formal:"Wie sprechen Sie Gäste an?", sie:"Sie", du:"Du", langs:"Sprachen Ihrer Gäste", langs_ph:"Deutsch, Englisch, etwas Spanisch",
+  greet:"Wie soll Mina das Telefon annehmen?", greet_ph:"„Trattoria Mare, guten Tag, hier ist Mina, wie kann ich helfen?“",
+  tone:"Etwas zu Ton oder Persönlichkeit", tone_ph:"Herzlich und schnell. Wir sind ein Familienbetrieb, keine großen Worte. Stammgäste rufen oft an, seien Sie freundlich, wenn jemand sagt, er kommt jede Woche.",
+  s7:"Wer bekommt was", s7w:"Mina richtet sich nach Ihrem Team, nicht umgekehrt.",
+  recips:"Wer erhält neue Reservierungen, Gruppenanfragen und Nachrichten, und wie?", recips_ph:"Reservierungen: WhatsApp-Gruppe „Service“, +49 …\nGruppen und Events: Marco per E-Mail, marco@…\nBeschwerden: Anna direkt, +49 170 …",
+  summary:"Tägliche Zusammenfassung zum Feierabend?", yes2:"Ja", no2:"Nein", sumto:"Zusammenfassung an (Name, WhatsApp oder E-Mail) und um welche Zeit", sumto_ph:"Anna, WhatsApp, 23:30",
+  s8:"Ihre Telefonleitung", s8w:"Nötig, um Mina einzuschalten. Wenn Sie es nicht wissen, schreiben Sie „weiß nicht“, wir finden es gemeinsam heraus.",
+  carrier:"Telefonanbieter", carrier_ph:"Telekom / Vodafone / o2 / 1&1 / anderer", line:"Art der Leitung",
+  l_pick:"Bitte wählen", l_mob:"Mobil", l_land:"Festnetz", l_voip:"Internettelefon (VoIP, FRITZ!Box)", l_pbx:"Telefonanlage", l_unk:"Weiß nicht",
+  fwd:"Wann soll Mina abheben?", fwd1:"Wenn innerhalb von 15 Sekunden niemand abnimmt (empfohlen)", fwd2:"Immer, jeder Anruf", fwd3:"Nur außerhalb der Öffnungszeiten",
+  s9:"Sonst noch etwas", s9w:"Alles, was eine neue Kollegin am ersten Tag wissen müsste.", other_ph:"Wir haben einen zweiten Eingang in der Seitenstraße. Unser Koch ist Sizilianer. Wir sind neben dem Theater, an Vorstellungsabenden ist 19:00 immer voll.",
+  consent:"Ich bin einverstanden, dass Fourmina (Krok Group Ltd) diese Angaben verarbeitet, um den Assistenten für meinen Betrieb einzurichten und zu betreiben, wie in der <a href=\"https://fourmina.com/fourmina-privacy-v2.html\" target=\"_blank\" rel=\"noopener\">Datenschutzerklärung</a> beschrieben.",
+  send:"An Fourmina senden", clear:"Formular leeren",
+  done_h:"Danke. Mina liest.", done_p:"Wir melden uns innerhalb eines Werktags mit der ersten Version Ihres Assistenten und einem Termin für ein 20-minütiges Gespräch zum Einschalten der Telefonleitung.",
+  fb_p:"Das automatische Senden hat nicht funktioniert. Ihre Antworten stehen unten. Bitte kopieren Sie sie in eine E-Mail an hello@fourmina.com oder nutzen Sie den Button.", fb_mail:"E-Mail öffnen", fb_copy:"Text kopieren",
+  st_req:"Bitte füllen Sie die mit * markierten Felder aus.", st_sending:"Wird gesendet …", st_err:"Senden fehlgeschlagen.", st_copied:"Kopiert.", st_clear:"Alle Antworten in diesem Formular löschen?"
+ },
+ en: {
+  st_req:"Please fill in the fields marked with *.", st_sending:"Sending …", st_err:"Sending failed.", st_copied:"Copied.", st_clear:"Delete all answers in this form?"
+ }
+};
+// snapshot EN from DOM
+document.querySelectorAll('[data-i18n]').forEach(function(el){ T.en[el.getAttribute('data-i18n')] = el.innerHTML; });
+document.querySelectorAll('[data-ph]').forEach(function(el){ T.en[el.getAttribute('data-ph')] = el.getAttribute('placeholder'); });
+var lang = 'en';
+function setLang(l){
+  lang = T[l] ? l : 'en';
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(T[lang][k]!=null) el.innerHTML = T[lang][k]; });
+  document.querySelectorAll('[data-ph]').forEach(function(el){ var k=el.getAttribute('data-ph'); if(T[lang][k]!=null) el.setAttribute('placeholder', T[lang][k]); });
+  document.querySelectorAll('.langsw button').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===lang); });
+  try{ localStorage.setItem('fm_lang', lang); }catch(e){}
+}
+document.querySelectorAll('.langsw button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); }); });
+(function(){ var l=null; try{ l=localStorage.getItem('fm_lang'); }catch(e){} if(!l && /^de/i.test(navigator.language||'')) l='de'; if(l) setLang(l); })();
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// ---- type switch ----
+var form = document.getElementById('f');
+function applyType(){ var t = form.querySelector('input[name=business_type]:checked'); document.body.setAttribute('data-type', t ? t.value : 'restaurant'); }
+form.querySelectorAll('input[name=business_type]').forEach(function(r){ r.addEventListener('change', applyType); });
+
+// ---- draft persistence ----
+var KEY = 'fm_onboarding_v1';
+function collect(){
+  var o = {};
+  Array.prototype.forEach.call(form.elements, function(el){
+    if(!el.name) return;
+    if(el.type==='radio'){ if(el.checked) o[el.name]=el.value; }
+    else if(el.type==='checkbox'){ o[el.name]=el.checked; }
+    else o[el.name]=el.value;
+  });
+  return o;
+}
+function restore(){
+  var raw=null; try{ raw=localStorage.getItem(KEY); }catch(e){}
+  if(!raw) return;
+  try{
+    var o=JSON.parse(raw);
+    Array.prototype.forEach.call(form.elements, function(el){
+      if(!el.name || !(el.name in o)) return;
+      if(el.type==='radio') el.checked = (el.value===o[el.name]);
+      else if(el.type==='checkbox') el.checked = !!o[el.name];
+      else el.value = o[el.name];
+    });
+  }catch(e){}
+}
+restore(); applyType();
+var saveT; form.addEventListener('input', function(){ clearTimeout(saveT); saveT=setTimeout(function(){ try{ localStorage.setItem(KEY, JSON.stringify(collect())); }catch(e){} }, 300); });
+
+document.getElementById('clear').addEventListener('click', function(){
+  if(!confirm(T[lang].st_clear)) return;
+  form.reset(); try{ localStorage.removeItem(KEY); }catch(e){} applyType();
+});
+
+// ---- submit ----
+var status = document.getElementById('status');
+function labelFor(name){
+  var el = form.querySelector('[name="'+name+'"]'); if(!el) return name;
+  var f = el.closest('.f'); var l = f ? f.querySelector('label.l') : null;
+  return l ? l.textContent.replace(/\s*\*$/,'').trim() : name;
+}
+function summary(o){
+  var lines = ['Fourmina onboarding · '+(o.business_name||'')+' · '+new Date().toISOString().slice(0,10), ''];
+  var hotel = o.business_type==='hotel';
+  Object.keys(o).forEach(function(k){
+    if(k==='consent') return;
+    var el = form.querySelector('[name="'+k+'"]');
+    if(el && el.closest('.hotel-only') && !hotel) return;
+    if(el && el.closest('.rest-only') && hotel) return;
+    var v = (o[k]==null?'':String(o[k])).trim(); if(!v) return;
+    lines.push(labelFor(k)+':'); lines.push(v); lines.push('');
+  });
+  return lines.join('\n');
+}
+form.addEventListener('submit', function(ev){
+  ev.preventDefault();
+  status.className='status';
+  var missing = Array.prototype.filter.call(form.querySelectorAll('[required]'), function(el){
+    if(el.closest('.hotel-only') && document.body.getAttribute('data-type')!=='hotel') return false;
+    if(el.type==='checkbox') return !el.checked;
+    return !el.value.trim() || (el.type==='email' && !el.checkValidity());
+  });
+  if(missing.length){ status.textContent = T[lang].st_req; status.className='status err'; missing[0].scrollIntoView({behavior:'smooth',block:'center'}); missing[0].focus({preventScroll:true}); return; }
+  var o = collect(); var text = summary(o);
+  var btn = document.getElementById('send'); btn.disabled = true; status.textContent = T[lang].st_sending;
+  function finish(ok){
+    form.style.display='none'; document.getElementById('intro').style.display='none';
+    var done=document.getElementById('done'); done.style.display='block';
+    if(!ok){
+      var fb=document.getElementById('fallback'); fb.style.display='block';
+      document.getElementById('fbtext').value = text;
+      document.getElementById('fbmail').href = 'mailto:'+TO_EMAIL+'?subject='+encodeURIComponent('Fourmina onboarding · '+(o.business_name||''))+'&body='+encodeURIComponent(text).slice(0,1800);
+    } else { try{ localStorage.removeItem(KEY); }catch(e){} }
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  if(!ACCESS_KEY){ finish(false); return; }
+  var payload = Object.assign({}, o, { access_key: ACCESS_KEY, subject: 'Fourmina onboarding · '+(o.business_name||''), from_name: 'Fourmina Forms', replyto: o.contact_email, summary_text: text, language: lang, page_url: location.href });
+  fetch('https://api.web3forms.com/submit', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(payload) })
+    .then(function(r){ return r.json(); })
+    .then(function(j){ finish(!!j.success); })
+    .catch(function(){ finish(false); })
+    .finally(function(){ btn.disabled=false; });
+});
+document.getElementById('fbcopy').addEventListener('click', function(){
+  var t=document.getElementById('fbtext'); t.select();
+  try{ navigator.clipboard.writeText(t.value); }catch(e){ document.execCommand('copy'); }
+  this.textContent = T[lang].st_copied;
+});
+</script>
+</body>
+</html>
