@@ -89,6 +89,7 @@ body[data-type="restaurant"] .rest-only,body[data-type="cafe"] .rest-only,body[d
   </div>
 
   <form id="f" novalidate>
+    <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">
 
     <!-- 1 -->
     <section class="card">
@@ -350,7 +351,7 @@ var KEY = 'fm_onboarding_v1';
 function collect(){
   var o = {};
   Array.prototype.forEach.call(form.elements, function(el){
-    if(!el.name) return;
+    if(!el.name || el.name==='botcheck') return;
     if(el.type==='radio'){ if(el.checked) o[el.name]=el.value; }
     else if(el.type==='checkbox'){ o[el.name]=el.checked; }
     else o[el.name]=el.value;
@@ -420,7 +421,7 @@ form.addEventListener('submit', function(ev){
     window.scrollTo({top:0,behavior:'smooth'});
   }
   if(!ACCESS_KEY){ finish(false); return; }
-  var payload = Object.assign({}, o, { access_key: ACCESS_KEY, subject: 'Fourmina onboarding · '+(o.business_name||''), from_name: 'Fourmina Forms', replyto: o.contact_email, summary_text: text, language: lang, page_url: location.href });
+  var payload = Object.assign({}, o, { access_key: ACCESS_KEY, botcheck: form.querySelector('[name=botcheck]').checked, subject: 'Fourmina onboarding · '+(o.business_name||''), from_name: 'Fourmina Forms', replyto: o.contact_email, summary_text: text, language: lang, page_url: location.href });
   fetch('https://api.web3forms.com/submit', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(payload) })
     .then(function(r){ return r.json(); })
     .then(function(j){ finish(!!j.success); })

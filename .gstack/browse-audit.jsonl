@@ -1,0 +1,4 @@
+{"ts":"2026-09-08T09:43:04.022Z","cmd":"goto","args":"https://web3forms.com","origin":"https://web3forms.com/?__cf_chl_rt_tk=XdrTmwHgWMulSrxQLLcMPzwAX.H6L6fAkZ8zkY8FHLo-1788860583-1.0.1.1-8JxX8kFGOesRS_dBkUC5WUg_0p.yGDxO7p7hKMk0GbQ","durationMs":266,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-09-08T09:43:04.187Z","cmd":"snapshot","args":"-i","origin":"https://web3forms.com/","durationMs":107,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-09-08T09:43:09.881Z","cmd":"url","args":"","origin":"https://web3forms.com/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-09-08T09:43:09.941Z","cmd":"snapshot","args":"-i","origin":"https://web3forms.com/","durationMs":4,"status":"ok","hasCookies":false,"mode":"launched"}
